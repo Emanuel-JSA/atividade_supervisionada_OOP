@@ -1,26 +1,26 @@
 package model;
 
 public class Endereco {
-    private Long idendereco;
+    private int idendereco;
     private String cidade;
-    private Long numero;
+    private int numero;
     private String rua;
 
     public Endereco() {
     }
 
-    public Endereco(Long idendereco, String cidade, Long numero, String rua) {
+    public Endereco(int idendereco, String cidade, int numero, String rua) {
         this.idendereco = idendereco;
         this.cidade = cidade;
         this.numero = numero;
         this.rua = rua;
     }
 
-    public Long getIdendereco() {
+    public int getIdendereco() {
         return idendereco;
     }
 
-    public void setIdendereco(Long idendereco) {
+    public void setIdendereco(int idendereco) {
         this.idendereco = idendereco;
     }
 
@@ -32,11 +32,11 @@ public class Endereco {
         this.cidade = cidade;
     }
 
-    public Long getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(Long numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 

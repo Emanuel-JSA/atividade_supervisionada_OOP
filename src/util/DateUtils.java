@@ -16,9 +16,9 @@ import static java.time.temporal.TemporalAdjusters.firstDayOfMonth;
 public class DateUtils {
 
     private static Calendar cal = Calendar.getInstance();
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     private static SimpleDateFormat dateFormat
-            = new SimpleDateFormat("dd/MM/yyyy");
+            = new SimpleDateFormat("yyyy/MM/dd");
 
     public static Date createDate(int dia, int mes, int ano) {
         //cal.set(ano, mes, dia, 0 ,0);

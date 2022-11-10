@@ -3,27 +3,29 @@ package model;
 import java.time.LocalDate;
 
 public class Pessoa {
-    private Integer id;
+    private int idpessoa;
     private String nome;
-    private String cpf;
+    private int cpf;
     private LocalDate dataNasc;
+    private Endereco endereco;
 
     public Pessoa() {
     }
 
-    public Pessoa(Integer id, String nome, String cpf, LocalDate dataNasc) {
-        this.id = id;
+    public Pessoa(int idpessoa, String nome, int cpf, LocalDate dataNasc, Endereco endereco) {
+        this.idpessoa = idpessoa;
         this.nome = nome;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
+        this.endereco = endereco;
     }
 
-    public Integer getId() {
-        return id;
+    public int getIdPessoa() {
+        return idpessoa;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdPessoa(int idpessoa) {
+        this.idpessoa = idpessoa;
     }
 
     public String getNome() {
@@ -34,11 +36,11 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getCpf() {
+    public int getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(int cpf) {
         this.cpf = cpf;
     }
 
@@ -50,13 +52,18 @@ public class Pessoa {
         this.dataNasc = dataNasc;
     }
 
+    public Endereco getEndereco() { return endereco; }
+
+    public void setEndereco(Endereco endereco) { this.endereco = endereco; }
+
     @Override
     public String toString() {
         return "Pessoa{" +
-                "id=" + id +
+                "id=" + idpessoa +
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", dataNasc=" + dataNasc +
+                ", endereco=" + endereco +
                 '}';
     }
 }

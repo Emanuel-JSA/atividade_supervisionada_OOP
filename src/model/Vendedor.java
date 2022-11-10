@@ -1,24 +1,24 @@
 package model;
 
-public class Vendedor {
-    private Long idvendedor;
+public class Vendedor extends Pessoa {
+    private int idvendedor;
     private double percentualcomissao;
     private double salario;
 
     public Vendedor() {
     }
 
-    public Vendedor(Long idvendedor, double percentualcomissao, double salario) {
+    public Vendedor(int idvendedor, double percentualcomissao, double salario) {
         this.idvendedor = idvendedor;
         this.percentualcomissao = percentualcomissao;
         this.salario = salario;
     }
 
-    public Long getIdvendedor() {
+    public int getIdvendedor() {
         return idvendedor;
     }
 
-    public void setIdvendedor(Long idvendedor) {
+    public void setIdvendedor(int idvendedor) {
         this.idvendedor = idvendedor;
     }
 

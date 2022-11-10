@@ -22,18 +22,6 @@ public class DAO {
         return connection.createStatement().executeQuery(comandoSql);
     }
 
-    protected int gerarProximoId(String tabela){
-        try {
-            ResultSet rs = runSQL("select max(id) from "+tabela);
-            if(rs.next()){
-                return rs.getInt(1) + 1;
-            }
-        } catch (SQLException ex) {
-            System.out.println("falha ao gerar próximo ID\n"+ ex.getMessage());
-        }
-        return -1;
-    }
-
     public PreparedStatement criarPreparedStatement(String sql) throws SQLException{
         return connection.prepareStatement(sql);
     }

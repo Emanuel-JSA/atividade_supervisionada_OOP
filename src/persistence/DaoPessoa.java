@@ -21,14 +21,13 @@ public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
             ResultSet rs = runSQL(query);
 
             while (rs.next()) {
-                Pessoa p = new Pessoa();
-                p.setId(rs.getInt("idpessoa"));
-                p.setNome(rs.getString("nome"));
-                p.setCpf(rs.getString("cpf"));
+                Pessoa pessoa = new Pessoa();
+                pessoa.setIdPessoa(rs.getInt("idpessoa"));
+                pessoa.setNome(rs.getString("nome"));
+                pessoa.setCpf(rs.getInt("cpf"));
 
-                listPessoa.add(p);
+                listPessoa.add(pessoa);
             }
-
 
         } catch (SQLException e) {
             System.out.println("Falha ao carregar todas as pessoas" + e.getMessage());
@@ -39,21 +38,19 @@ public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
     @Override
     public boolean save(Pessoa pessoa) {
         try {
-            String insert = "INSERT INTO pessoa( id, nome, cpf)\n"
-                    + " VALUES (?, ?, ?)";
+            String insert = "INSERT INTO pessoa(nome, cpf)\n"
+                    + " VALUES (?, ?)";
 
             PreparedStatement ps = criarPreparedStatement(insert);
-            pessoa.setId(gerarProximoId("pessoa"));
-            ps.setInt(1, pessoa.getId());
-            ps.setString(2, pessoa.getNome());
-            ps.setString(3, pessoa.getCpf());
+            ps.setString(1, pessoa.getNome());
+            ps.setInt(2, pessoa.getCpf());
 
+            ps.execute();
             return true;
         } catch (SQLException e) {
             System.out.println("Erro ao adicionar pessoa" + e.getMessage());
             return false;
         }
-
     }
 
     @Override
@@ -61,11 +58,11 @@ public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
         try {
             String sql = "UPDATE pessoa\n"
                     + "SET nome=?, cpf=?\n"
-                    + " WHERE id= " + pessoa.getId();
+                    + " WHERE idpessoa= " + pessoa.getIdPessoa();
 
             PreparedStatement ps = criarPreparedStatement(sql);
             ps.setString(1, pessoa.getNome());
-            ps.setString(2, pessoa.getCpf());
+            ps.setInt(2, pessoa.getCpf());
 
             ps.executeUpdate();
             return true;
@@ -76,22 +73,20 @@ public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
     }
 
     @Override
-    public Pessoa findById(String query) {
+    public Pessoa findById(int id) {
         Pessoa cl = null;
 
         try {
-            String sql = "SELECT * FROM pessoa \n" +
-                    " where pessoa.idpessoa = " + query +
-                    " or pessoa.nome = " + query +
-                    " or pessoa.cpf = " + query;
+                String sql = "SELECT * FROM pessoa \n" +
+                        " where pessoa.idpessoa = " + id;
 
             ResultSet rs = runSQL(sql);
 
             if (rs.next()) {
                 cl = new Pessoa();
-                cl.setId(rs.getInt("id"));
+                cl.setIdPessoa(rs.getInt("idpessoa"));
                 cl.setNome(rs.getString("nome"));
-                cl.setCpf(rs.getString("cpf"));
+                cl.setCpf(rs.getInt("cpf"));
             }
         } catch (SQLException e) {
             System.out.println("Falha ao carregar pessoa!\n"

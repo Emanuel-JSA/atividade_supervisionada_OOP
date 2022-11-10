@@ -1,36 +1,36 @@
 package model;
 
 public class Imovel {
-    private Long idimovel;
+    private int idimovel;
     private String matriculaimovel;
-    private Long proprietario;
-    private Long endereco;
+    private int proprietario;
     private String tipo;
     private double comprimento;
     private double largura;
     private double valor;
     private double cadpro;
+    private Endereco endereco;
 
     public Imovel() {
     }
 
-    public Imovel(Long idimovel, String matriculaimovel, Long proprietario, Long endereco, String tipo, double comprimento, double largura, double valor, double cadpro) {
+    public Imovel(int idimovel, String matriculaimovel, int proprietario, String tipo, double comprimento, double largura, double valor, double cadpro, Endereco endereco) {
         this.idimovel = idimovel;
         this.matriculaimovel = matriculaimovel;
         this.proprietario = proprietario;
-        this.endereco = endereco;
         this.tipo = tipo;
         this.comprimento = comprimento;
         this.largura = largura;
         this.valor = valor;
         this.cadpro = cadpro;
+        this.endereco = endereco;
     }
 
-    public Long getIdimovel() {
+    public int getIdimovel() {
         return idimovel;
     }
 
-    public void setIdimovel(Long idimovel) {
+    public void setIdimovel(int idimovel) {
         this.idimovel = idimovel;
     }
 
@@ -42,20 +42,12 @@ public class Imovel {
         this.matriculaimovel = matriculaimovel;
     }
 
-    public Long getProprietario() {
+    public int getProprietario() {
         return proprietario;
     }
 
-    public void setProprietario(Long proprietario) {
+    public void setProprietario(int proprietario) {
         this.proprietario = proprietario;
-    }
-
-    public Long getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Long endereco) {
-        this.endereco = endereco;
     }
 
     public String getTipo() {
@@ -98,18 +90,25 @@ public class Imovel {
         this.cadpro = cadpro;
     }
 
+    public Endereco getEndereco(Endereco endereco) {
+        return this.endereco;
+    }
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
     @Override
     public String toString() {
         return "Imovel{" +
                 "idimovel=" + idimovel +
                 ", matriculaimovel='" + matriculaimovel + '\'' +
                 ", proprietario=" + proprietario +
-                ", endereco=" + endereco +
                 ", tipo='" + tipo + '\'' +
                 ", comprimento=" + comprimento +
                 ", largura=" + largura +
                 ", valor=" + valor +
                 ", cadpro=" + cadpro +
+                ", endereco=" + endereco +
                 '}';
     }
 }
