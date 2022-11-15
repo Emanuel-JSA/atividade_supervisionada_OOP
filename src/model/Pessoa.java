@@ -1,18 +1,16 @@
 package model;
 
-import java.time.LocalDate;
-
 public class Pessoa {
     private int idpessoa;
     private String nome;
     private int cpf;
-    private LocalDate dataNasc;
+    private String dataNasc;
     private Endereco endereco;
 
     public Pessoa() {
     }
 
-    public Pessoa(int idpessoa, String nome, int cpf, LocalDate dataNasc, Endereco endereco) {
+    public Pessoa(int idpessoa, String nome, int cpf, String dataNasc, Endereco endereco) {
         this.idpessoa = idpessoa;
         this.nome = nome;
         this.cpf = cpf;
@@ -44,11 +42,11 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public LocalDate getDataNasc() {
+    public String getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(LocalDate dataNasc) {
+    public void setDataNasc(String dataNasc) {
         this.dataNasc = dataNasc;
     }
 

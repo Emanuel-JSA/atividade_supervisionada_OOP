@@ -34,6 +34,10 @@ public class DaoVendedor extends DAO implements DefaultPersistence<Vendedor>{
 
     @Override
     public boolean save(Vendedor vendedor) {
+
+        DaoPessoa daoPessoa = new DaoPessoa();
+        daoPessoa.save(vendedor);
+
         try {
             String insert = "INSERT INTO vendedor(percentualcomissao, salario)\n"
                     + " VALUES (?, ?)";
@@ -52,6 +56,10 @@ public class DaoVendedor extends DAO implements DefaultPersistence<Vendedor>{
 
     @Override
     public boolean update(Vendedor vendedor) {
+
+        DaoPessoa daoPessoa = new DaoPessoa();
+        daoPessoa.update(vendedor);
+
         try {
             String sql = "UPDATE vendedor\n"
                     + "SET percentualcomissao=?, salario=?\n"
@@ -90,5 +98,18 @@ public class DaoVendedor extends DAO implements DefaultPersistence<Vendedor>{
                     + e.getMessage());
         }
         return cl;
+    }
+
+    @Override
+    public void delete(int id) {
+        try {
+            String sql = "DELETE FROM vendedor\n" +
+                         "WHERE idvendedor = " + id;
+            executeSql(sql);
+
+        }catch (SQLException e) {
+            System.out.println("Falha ao deletar!\n"
+                               + e.getMessage());
+        }
     }
 }

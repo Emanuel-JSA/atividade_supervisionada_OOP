@@ -1,7 +1,9 @@
 package persistence;
 
 import model.Pessoa;
+import util.DateUtils;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,12 +40,14 @@ public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
     @Override
     public boolean save(Pessoa pessoa) {
         try {
-            String insert = "INSERT INTO pessoa(nome, cpf)\n"
-                    + " VALUES (?, ?)";
+            String insert = "INSERT INTO pessoa(nome, cpf, datanasc)\n"
+                    + " VALUES (?, ?, ?)";
+
 
             PreparedStatement ps = criarPreparedStatement(insert);
             ps.setString(1, pessoa.getNome());
             ps.setInt(2, pessoa.getCpf());
+            ps.setDate(3, new java.sql.Date(DateUtils.parseDate(pessoa.getDataNasc()).getTime()));
 
             ps.execute();
             return true;
@@ -93,5 +97,18 @@ public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
                     + e.getMessage());
         }
         return cl;
+    }
+
+    @Override
+    public void delete(int id) {
+        try {
+            String sql = "DELETE FROM pessoa\n" +
+                         "WHERE idpessoa = " + id;
+            executeSql(sql);
+
+        }catch (SQLException e) {
+            System.out.println("Falha ao deletar!\n"
+                               + e.getMessage());
+        }
     }
 }

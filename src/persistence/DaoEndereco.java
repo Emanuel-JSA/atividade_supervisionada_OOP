@@ -95,4 +95,17 @@ public class DaoEndereco extends DAO implements DefaultPersistence<Endereco>{
         }
         return cl;
     }
+
+    @Override
+    public void delete(int id) {
+        try {
+            String sql = "DELETE FROM endereco\n" +
+                         "WHERE idendereco = " + id;
+            executeSql(sql);
+
+        }catch (SQLException e) {
+            System.out.println("Falha ao deletar!\n"
+                               + e.getMessage());
+        }
+    }
 }

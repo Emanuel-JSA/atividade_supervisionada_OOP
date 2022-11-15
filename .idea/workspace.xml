@@ -2,21 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff728292-6fc1-4fa9-92a0-649319be92aa" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/control/ClienteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/control/ContratoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/control/DefaultController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/control/EnderecoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/control/ImovelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/control/VendedorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ImovelRural.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/ImovelUrbano.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Contrato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Contrato.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Endereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Endereco.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Imovel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Imovel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Pessoa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Vendedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Vendedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistence/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/DaoContrato.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/DaoContrato.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/DaoEndereco.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/DaoEndereco.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/DaoImovel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/DaoImovel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/DaoPessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/DaoPessoa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/DaoVendedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/DaoVendedor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistence/DefaultPersistence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/DefaultPersistence.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DateUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,23 +45,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;G:/Projects/atividadesupervisionada&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "G:/Projects/atividadesupervisionada/src/model",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Projects\atividadesupervisionada\src\model" />
       <recent name="G:\Projects\atividadesupervisionada\src" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">

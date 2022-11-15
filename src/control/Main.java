@@ -1,51 +1,210 @@
 package control;
 
-import model.Contrato;
-import model.Pessoa;
 import persistence.*;
 import util.Input;
 
 public class Main {
 
-    private static DaoPessoa daoPessoa = new DaoPessoa();
-    private static DaoEndereco daoEndereco = new DaoEndereco();
-    private static DaoImovel daoImovel = new DaoImovel();
-    private static DaoVendedor daoVendedor = new DaoVendedor();
-    private static DaoContrato daoContrato = new DaoContrato();
-
     public static void main(String[] args) {
         DatabaseConnection.getConnection();
 
-//        cadastrarPessoa();
-
-        System.out.println("\n");
-        listarPessoas();
-        listarContrato();
-
-    }
-
-    private static void listarContrato() {
-        System.out.println("\nLista de contratos");
-        for (Contrato contrato : daoContrato.findAll()) {
-            System.out.println("" + contrato.toString());
+        int op = -1;
+        while (op != 0) {
+            System.out.println("""
+                    1 - Cliente
+                    2 - Vendedor
+                    3 - Endereco
+                    4 - Imovel
+                    5 - Contrato
+                    0 - sair
+                    """);
+            op = Input.nextInt();
+            switch (op) {
+                case 1:
+                    ClienteController clienteController = new ClienteController();
+                    constructorCliente(clienteController);
+                    break;
+                case 2:
+                    VendedorController vendedorController = new VendedorController();
+                    constructorVendedor(vendedorController);
+                    break;
+                case 3:
+                    EnderecoController enderecoController = new EnderecoController();
+                    constructorEndereco(enderecoController);
+                    break;
+                case 4:
+                    ImovelController imovelController = new ImovelController();
+                    constructorImovel(imovelController);
+                    break;
+                case 5:
+                    ContratoController contratoController = new ContratoController();
+                    constructorContrato(contratoController);
+                default:
+                    if (op != 0) {
+                        System.out.println("\nopção inválida!");
+                    }
+            }
         }
     }
 
-    public static void listarPessoas() {
-        System.out.println("\nLista de Pessoas");
-        for (Pessoa pessoa : daoPessoa.findAll()) {
-            System.out.println("" + pessoa.toString());
+    private static void constructorCliente(ClienteController controller) {
+        String controllerName = controller.toString();
+
+        System.out.println("");
+        System.out.println("1 - Criar " + controllerName + "\n" +
+                           "2 - alterar " + controllerName + "\n" +
+                           "3 - deletar " + controllerName + "\n" +
+                           "4 - listar " + controllerName + "s\n");
+        System.out.println("0 - sair");
+
+        int op = -1;
+        while (op != 0) {
+            op = Input.nextInt();
+            switch (op) {
+                case 1:
+                    controller.create();
+                    break;
+                case 2:
+                    controller.update();
+                    break;
+                case 3:
+                    controller.delete();
+                    break;
+                case 4:
+                    controller.list();
+                    break;
+                default:
+                    System.out.println("ERROR!!");
+                    break;
+            }
         }
     }
 
-    public static void cadastrarPessoa() {
-        Pessoa p = new Pessoa();
-        System.out.println("Qual o seu nome: ");
-        p.setNome(Input.nextLine());
-        System.out.println("cpf: ");
-        p.setCpf(Input.nextInt());
+    private static void constructorVendedor(VendedorController controller) {
+        String controllerName = controller.toString();
 
-        daoPessoa.save(p);
+        System.out.println("1 - Criar " + controllerName + "\n" +
+                           "2 - alterar " + controllerName + "\n" +
+                           "3 - deletar " + controllerName + "\n" +
+                           "4 - listar " + controllerName + "s\n");
+        System.out.println("0 - sair");
+
+        int op = -1;
+        while (op != 0) {
+            op = Input.nextInt();
+            switch (op) {
+                case 1:
+                    controller.create();
+                    break;
+                case 2:
+                    controller.update();
+                    break;
+                case 3:
+                    controller.delete();
+                    break;
+                case 4:
+                    controller.list();
+                    break;
+                default:
+                    System.out.println("ERROR!!");
+                    break;
+            }
+        }
     }
 
+    private static void constructorEndereco(EnderecoController controller) {
+        String controllerName = controller.toString();
+
+        System.out.println("1 - Criar " + controllerName + "\n" +
+                           "2 - alterar " + controllerName + "\n" +
+                           "3 - deletar " + controllerName + "\n" +
+                           "4 - listar " + controllerName + "s\n");
+        System.out.println("0 - sair");
+
+        int op = -1;
+        while (op != 0) {
+            op = Input.nextInt();
+            switch (op) {
+                case 1:
+                    controller.create();
+                    break;
+                case 2:
+                    controller.update();
+                    break;
+                case 3:
+                    controller.delete();
+                    break;
+                case 4:
+                    controller.list();
+                    break;
+                default:
+                    System.out.println("ERROR!!");
+                    break;
+            }
+        }
+    }
+
+    private static void constructorImovel(ImovelController controller) {
+        String controllerName = controller.toString();
+
+        System.out.println("1 - Criar " + controllerName + "\n" +
+                           "2 - alterar " + controllerName + "\n" +
+                           "3 - deletar " + controllerName + "\n" +
+                           "4 - listar " + controllerName + "s\n");
+        System.out.println("0 - sair");
+
+        int op = -1;
+        while (op != 0) {
+            op = Input.nextInt();
+            switch (op) {
+                case 1:
+                    controller.create();
+                    break;
+                case 2:
+                    controller.update();
+                    break;
+                case 3:
+                    controller.delete();
+                    break;
+                case 4:
+                    controller.list();
+                    break;
+                default:
+                    System.out.println("ERROR!!");
+                    break;
+            }
+        }
+    }
+
+    private static void constructorContrato(ContratoController controller) {
+        String controllerName = controller.toString();
+
+        System.out.println("1 - Criar " + controllerName + "\n" +
+                           "2 - alterar " + controllerName + "\n" +
+                           "3 - deletar " + controllerName + "\n" +
+                           "4 - listar " + controllerName + "s\n");
+        System.out.println("0 - sair");
+
+        int op = -1;
+        while (op != 0) {
+            op = Input.nextInt();
+            switch (op) {
+                case 1:
+                    controller.create();
+                    break;
+                case 2:
+                    controller.update();
+                    break;
+                case 3:
+                    controller.delete();
+                    break;
+                case 4:
+                    controller.list();
+                    break;
+                default:
+                    System.out.println("ERROR!!");
+                    break;
+            }
+        }
+    }
 }

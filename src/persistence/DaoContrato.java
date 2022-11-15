@@ -146,4 +146,8 @@ public class DaoContrato extends DAO implements DefaultPersistence<Contrato> {
         }
         return cl;
     }
+
+    @Override
+    public void delete(int id){
+    }
 }

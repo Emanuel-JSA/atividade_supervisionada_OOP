@@ -21,7 +21,6 @@ public class DaoImovel extends DAO implements DefaultPersistence<Imovel> {
                 Imovel imovel = new Imovel();
                 imovel.setIdimovel(rs.getInt("idimovel"));
                 imovel.setMatriculaimovel(rs.getString("matriculaimovel"));
-                imovel.setProprietario(rs.getInt("proprietario"));
                 imovel.setTipo(rs.getString("tipo"));
                 imovel.setComprimento(rs.getDouble("comprimento"));
                 imovel.setLargura(rs.getDouble("largura"));
@@ -41,17 +40,17 @@ public class DaoImovel extends DAO implements DefaultPersistence<Imovel> {
     @Override
     public boolean save(Imovel imovel) {
         try {
-            String insert = "INSERT INTO imovel(matriculaimovel, proprietario, tipo, comprimento, largura, valor, cadpro)"
+            String insert = "INSERT INTO imovel(matriculaimovel, tipo, comprimento, largura, valor, cadpro, endereco)"
                     + " VALUES (?,?,?,?,?,?,?)";
 
             PreparedStatement ps = criarPreparedStatement(insert);
             ps.setString(1, imovel.getMatriculaimovel());
-            ps.setInt(2, imovel.getProprietario());
             ps.setString(3, imovel.getTipo());
             ps.setDouble(4, imovel.getComprimento());
             ps.setDouble(5,imovel.getLargura());
             ps.setDouble(6, imovel.getValor());
             ps.setDouble(7, imovel.getCadpro());
+            ps.setInt(8, imovel.getEndereco().getIdendereco());
 
             ps.execute();
             return true;
@@ -66,12 +65,11 @@ public class DaoImovel extends DAO implements DefaultPersistence<Imovel> {
     public boolean update(Imovel imovel) {
         try {
             String sql = "UPDATE imovel\n"
-                    + "SET idimovel=?, matriculaimovel=?, proprietario=?, tipo=?, comprimento=?, largura=?, valor=?, cadpro=?\n"
+                    + "SET idimovel=?, matriculaimovel=?, tipo=?, comprimento=?, largura=?, valor=?, cadpro=?\n"
                     + " WHERE idimovel= " + imovel.getIdimovel();
 
             PreparedStatement ps = criarPreparedStatement(sql);
             ps.setString(2, imovel.getMatriculaimovel());
-            ps.setInt(3, imovel.getProprietario());
             ps.setString(4, imovel.getTipo());
             ps.setDouble(5, imovel.getComprimento());
             ps.setDouble(6,imovel.getLargura());
@@ -100,7 +98,6 @@ public class DaoImovel extends DAO implements DefaultPersistence<Imovel> {
                 cl = new Imovel();
                 cl.setIdimovel(rs.getInt("idimovel"));
                 cl.setMatriculaimovel(rs.getString("matriculaimovel"));
-                cl.setProprietario(rs.getInt("proprietario"));
                 cl.setTipo(rs.getString("tipo"));
                 cl.setComprimento(rs.getDouble("comprimento"));
                 cl.setLargura(rs.getDouble("largura"));
@@ -112,5 +109,18 @@ public class DaoImovel extends DAO implements DefaultPersistence<Imovel> {
                     + e.getMessage());
         }
         return cl;
+    }
+
+    @Override
+    public void delete(int id) {
+        try {
+            String sql = "DELETE FROM imovel\n" +
+                         "WHERE idimovel = " + id;
+            executeSql(sql);
+
+        }catch (SQLException e) {
+            System.out.println("Falha ao deletar!\n"
+                               + e.getMessage());
+        }
     }
 }

@@ -5,8 +5,9 @@ import model.Pessoa;
 import java.util.ArrayList;
 
 public interface DefaultPersistence<T> {
-    public ArrayList<T> findAll();
-    public boolean save(T t);
-    public boolean update(T t);
-    public T findById(int id);
+    ArrayList<T> findAll();
+    boolean save(T t);
+    boolean update(T t);
+    T findById(int id);
+    void delete(int id);
 }

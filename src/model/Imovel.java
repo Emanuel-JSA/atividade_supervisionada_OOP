@@ -1,20 +1,20 @@
 package model;
 
 public class Imovel {
-    private int idimovel;
-    private String matriculaimovel;
-    private int proprietario;
-    private String tipo;
-    private double comprimento;
-    private double largura;
-    private double valor;
-    private double cadpro;
-    private Endereco endereco;
+    protected int idimovel;
+    protected String matriculaimovel;
+    protected Pessoa proprietario;
+    protected String tipo;
+    protected double comprimento;
+    protected double largura;
+    protected double valor;
+    protected double cadpro;
+    protected Endereco endereco;
 
     public Imovel() {
     }
 
-    public Imovel(int idimovel, String matriculaimovel, int proprietario, String tipo, double comprimento, double largura, double valor, double cadpro, Endereco endereco) {
+    public Imovel(int idimovel, String matriculaimovel, Pessoa proprietario, String tipo, double comprimento, double largura, double valor, double cadpro, Endereco endereco) {
         this.idimovel = idimovel;
         this.matriculaimovel = matriculaimovel;
         this.proprietario = proprietario;
@@ -42,11 +42,11 @@ public class Imovel {
         this.matriculaimovel = matriculaimovel;
     }
 
-    public int getProprietario() {
+    public Pessoa getProprietario() {
         return proprietario;
     }
 
-    public void setProprietario(int proprietario) {
+    public void setProprietario(Pessoa proprietario) {
         this.proprietario = proprietario;
     }
 
@@ -90,12 +90,14 @@ public class Imovel {
         this.cadpro = cadpro;
     }
 
-    public Endereco getEndereco(Endereco endereco) {
+    public Endereco getEndereco() {
         return this.endereco;
     }
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
+
+    public double calcularArea(){ return 0; };
 
     @Override
     public String toString() {
