@@ -3,11 +3,11 @@ package persistence;
 import model.Pessoa;
 import util.DateUtils;
 
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
 
@@ -47,7 +47,7 @@ public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
             PreparedStatement ps = criarPreparedStatement(insert);
             ps.setString(1, pessoa.getNome());
             ps.setInt(2, pessoa.getCpf());
-            ps.setDate(3, new java.sql.Date(DateUtils.parseDate(pessoa.getDataNasc()).getTime()));
+            ps.setDate(3, new java.sql.Date(Objects.requireNonNull(DateUtils.parseDate(pessoa.getDataNasc())).getTime()));
 
             ps.execute();
             return true;
@@ -67,6 +67,7 @@ public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
             PreparedStatement ps = criarPreparedStatement(sql);
             ps.setString(1, pessoa.getNome());
             ps.setInt(2, pessoa.getCpf());
+            ps.setDate(3, new java.sql.Date(Objects.requireNonNull(DateUtils.parseDate(pessoa.getDataNasc())).getTime()));
 
             ps.executeUpdate();
             return true;
@@ -78,7 +79,7 @@ public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
 
     @Override
     public Pessoa findById(int id) {
-        Pessoa cl = null;
+        Pessoa cliente = null;
 
         try {
                 String sql = "SELECT * FROM pessoa \n" +
@@ -87,28 +88,32 @@ public class DaoPessoa extends DAO implements DefaultPersistence<Pessoa>{
             ResultSet rs = runSQL(sql);
 
             if (rs.next()) {
-                cl = new Pessoa();
-                cl.setIdPessoa(rs.getInt("idpessoa"));
-                cl.setNome(rs.getString("nome"));
-                cl.setCpf(rs.getInt("cpf"));
+                cliente = new Pessoa();
+                cliente.setIdPessoa(rs.getInt("idpessoa"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setCpf(rs.getInt("cpf"));
             }
         } catch (SQLException e) {
             System.out.println("Falha ao carregar pessoa!\n"
                     + e.getMessage());
         }
-        return cl;
+        return cliente;
     }
 
     @Override
-    public void delete(int id) {
+    public Pessoa delete(int id) {
+
+        Pessoa clienteDeleted = findById(id);
         try {
             String sql = "DELETE FROM pessoa\n" +
                          "WHERE idpessoa = " + id;
             executeSql(sql);
+            return clienteDeleted;
 
         }catch (SQLException e) {
             System.out.println("Falha ao deletar!\n"
                                + e.getMessage());
+            return null;
         }
     }
 }

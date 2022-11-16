@@ -2,6 +2,7 @@ package persistence;
 
 import model.Endereco;
 import model.Pessoa;
+import model.Vendedor;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -97,15 +98,18 @@ public class DaoEndereco extends DAO implements DefaultPersistence<Endereco>{
     }
 
     @Override
-    public void delete(int id) {
+    public Endereco delete(int id) {
+
+        Endereco enderecoDeleted = findById(id);
         try {
             String sql = "DELETE FROM endereco\n" +
                          "WHERE idendereco = " + id;
             executeSql(sql);
-
+            return enderecoDeleted;
         }catch (SQLException e) {
             System.out.println("Falha ao deletar!\n"
                                + e.getMessage());
+            return null;
         }
     }
 }

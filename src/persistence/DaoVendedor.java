@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Pessoa;
 import model.Vendedor;
 
 import java.sql.PreparedStatement;
@@ -101,15 +102,18 @@ public class DaoVendedor extends DAO implements DefaultPersistence<Vendedor>{
     }
 
     @Override
-    public void delete(int id) {
+    public Vendedor delete(int id) {
+
+        Vendedor vendedorDeleted = findById(id);
         try {
             String sql = "DELETE FROM vendedor\n" +
                          "WHERE idvendedor = " + id;
             executeSql(sql);
-
+            return vendedorDeleted;
         }catch (SQLException e) {
             System.out.println("Falha ao deletar!\n"
                                + e.getMessage());
+            return null;
         }
     }
 }

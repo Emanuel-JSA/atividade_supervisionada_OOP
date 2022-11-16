@@ -42,6 +42,7 @@ public class Vendedor extends Pessoa {
     public String toString() {
         return "Vendedor{" +
                 "idvendedor=" + idvendedor +
+                ", nome='" + nome + '\'' +
                 ", percentualcomissao=" + percentualcomissao +
                 ", salario=" + salario +
                 '}';

@@ -5,13 +5,14 @@ import persistence.DaoPessoa;
 import util.DateUtils;
 import util.Input;
 
+import java.util.ArrayList;
+
 public class ClienteController extends DefaultController{
 
     DaoPessoa daoPessoa = new DaoPessoa();
 
     public Pessoa create() {
         Pessoa cliente = new Pessoa();
-        EnderecoController enderecoController = new EnderecoController();
 
         System.out.println("Nome do cliente:");
         cliente.setNome(Input.nextLine());
@@ -47,11 +48,19 @@ public class ClienteController extends DefaultController{
 
     public void delete() {
         System.out.println("Id do cliente:");
-        daoPessoa.delete(Input.nextInt());
+        Pessoa clienteDeleted = daoPessoa.delete(Input.nextInt());
+        if (clienteDeleted != null) {
+            System.out.println("Cliente: " + clienteDeleted.getNome() + 
+                               " de id: " + clienteDeleted.getIdPessoa() + 
+                               " deletado");
+        }
     }
 
     public void list() {
-
+        ArrayList<Pessoa> listClientes = daoPessoa.findAll();
+        for (Pessoa cliente : listClientes) {
+            System.out.println(cliente.toString());
+        }
     }
 
     public String toString() {

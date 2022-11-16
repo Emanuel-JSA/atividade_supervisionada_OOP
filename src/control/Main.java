@@ -50,32 +50,22 @@ public class Main {
     private static void constructorCliente(ClienteController controller) {
         String controllerName = controller.toString();
 
-        System.out.println("");
-        System.out.println("1 - Criar " + controllerName + "\n" +
-                           "2 - alterar " + controllerName + "\n" +
-                           "3 - deletar " + controllerName + "\n" +
-                           "4 - listar " + controllerName + "s\n");
-        System.out.println("0 - sair");
-
         int op = -1;
         while (op != 0) {
+            System.out.println("");
+            System.out.println("1 - Criar " + controllerName + "\n" +
+                               "2 - alterar " + controllerName + "\n" +
+                               "3 - deletar " + controllerName + "\n" +
+                               "4 - listar " + controllerName);
+            System.out.println("0 - sair");
+
             op = Input.nextInt();
             switch (op) {
-                case 1:
-                    controller.create();
-                    break;
-                case 2:
-                    controller.update();
-                    break;
-                case 3:
-                    controller.delete();
-                    break;
-                case 4:
-                    controller.list();
-                    break;
-                default:
-                    System.out.println("ERROR!!");
-                    break;
+                case 1 -> controller.create();
+                case 2 -> controller.update();
+                case 3 -> controller.delete();
+                case 4 -> controller.list();
+                default -> System.out.println("Saindo....\n...\n");
             }
         }
     }
@@ -83,31 +73,21 @@ public class Main {
     private static void constructorVendedor(VendedorController controller) {
         String controllerName = controller.toString();
 
-        System.out.println("1 - Criar " + controllerName + "\n" +
-                           "2 - alterar " + controllerName + "\n" +
-                           "3 - deletar " + controllerName + "\n" +
-                           "4 - listar " + controllerName + "s\n");
-        System.out.println("0 - sair");
-
         int op = -1;
         while (op != 0) {
+            System.out.println("1 - Criar " + controllerName + "\n" +
+                               "2 - alterar " + controllerName + "\n" +
+                               "3 - deletar " + controllerName + "\n" +
+                               "4 - listar " + controllerName);
+            System.out.println("0 - sair");
+
             op = Input.nextInt();
             switch (op) {
-                case 1:
-                    controller.create();
-                    break;
-                case 2:
-                    controller.update();
-                    break;
-                case 3:
-                    controller.delete();
-                    break;
-                case 4:
-                    controller.list();
-                    break;
-                default:
-                    System.out.println("ERROR!!");
-                    break;
+                case 1 -> controller.create();
+                case 2 -> controller.update();
+                case 3 -> controller.delete();
+                case 4 -> controller.list();
+                default -> System.out.println("Saindo....\n...\n");
             }
         }
     }
@@ -115,31 +95,21 @@ public class Main {
     private static void constructorEndereco(EnderecoController controller) {
         String controllerName = controller.toString();
 
-        System.out.println("1 - Criar " + controllerName + "\n" +
-                           "2 - alterar " + controllerName + "\n" +
-                           "3 - deletar " + controllerName + "\n" +
-                           "4 - listar " + controllerName + "s\n");
-        System.out.println("0 - sair");
-
         int op = -1;
         while (op != 0) {
+            System.out.println("1 - Criar " + controllerName + "\n" +
+                               "2 - alterar " + controllerName + "\n" +
+                               "3 - deletar " + controllerName + "\n" +
+                               "4 - listar " + controllerName);
+            System.out.println("0 - sair");
+
             op = Input.nextInt();
             switch (op) {
-                case 1:
-                    controller.create();
-                    break;
-                case 2:
-                    controller.update();
-                    break;
-                case 3:
-                    controller.delete();
-                    break;
-                case 4:
-                    controller.list();
-                    break;
-                default:
-                    System.out.println("ERROR!!");
-                    break;
+                case 1 -> controller.create();
+                case 2 -> controller.update();
+                case 3 -> controller.delete();
+                case 4 -> controller.list();
+                default -> System.out.println("Saindo....\n...\n");
             }
         }
     }
@@ -147,31 +117,21 @@ public class Main {
     private static void constructorImovel(ImovelController controller) {
         String controllerName = controller.toString();
 
-        System.out.println("1 - Criar " + controllerName + "\n" +
-                           "2 - alterar " + controllerName + "\n" +
-                           "3 - deletar " + controllerName + "\n" +
-                           "4 - listar " + controllerName + "s\n");
-        System.out.println("0 - sair");
-
         int op = -1;
         while (op != 0) {
+            System.out.println("1 - Criar " + controllerName + "\n" +
+                               "2 - alterar " + controllerName + "\n" +
+                               "3 - deletar " + controllerName + "\n" +
+                               "4 - listar " + controllerName);
+            System.out.println("0 - sair");
+
             op = Input.nextInt();
             switch (op) {
-                case 1:
-                    controller.create();
-                    break;
-                case 2:
-                    controller.update();
-                    break;
-                case 3:
-                    controller.delete();
-                    break;
-                case 4:
-                    controller.list();
-                    break;
-                default:
-                    System.out.println("ERROR!!");
-                    break;
+                case 1 -> controller.create();
+                case 2 -> controller.update();
+                case 3 -> controller.delete();
+                case 4 -> controller.list();
+                default -> System.out.println("Saindo....\n...\n");
             }
         }
     }
@@ -179,31 +139,21 @@ public class Main {
     private static void constructorContrato(ContratoController controller) {
         String controllerName = controller.toString();
 
-        System.out.println("1 - Criar " + controllerName + "\n" +
-                           "2 - alterar " + controllerName + "\n" +
-                           "3 - deletar " + controllerName + "\n" +
-                           "4 - listar " + controllerName + "s\n");
-        System.out.println("0 - sair");
-
         int op = -1;
         while (op != 0) {
+            System.out.println("1 - Criar " + controllerName + "\n" +
+                               "2 - alterar " + controllerName + "\n" +
+                               "3 - deletar " + controllerName + "\n" +
+                               "4 - listar " + controllerName);
+            System.out.println("0 - sair");
+
             op = Input.nextInt();
             switch (op) {
-                case 1:
-                    controller.create();
-                    break;
-                case 2:
-                    controller.update();
-                    break;
-                case 3:
-                    controller.delete();
-                    break;
-                case 4:
-                    controller.list();
-                    break;
-                default:
-                    System.out.println("ERROR!!");
-                    break;
+                case 1 -> controller.create();
+                case 2 -> controller.update();
+                case 3 -> controller.delete();
+                case 4 -> controller.list();
+                default -> System.out.println("Saindo....\n...\n");
             }
         }
     }

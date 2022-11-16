@@ -13,7 +13,7 @@ public class DaoImovel extends DAO implements DefaultPersistence<Imovel> {
     public ArrayList<Imovel> findAll() {
         ArrayList<Imovel> listImovel = new ArrayList<>();
 
-        try{
+        try {
             String query = "SELECT * FROM imovel";
             ResultSet rs = runSQL(query);
 
@@ -40,14 +40,14 @@ public class DaoImovel extends DAO implements DefaultPersistence<Imovel> {
     @Override
     public boolean save(Imovel imovel) {
         try {
-            String insert = "INSERT INTO imovel(matriculaimovel, tipo, comprimento, largura, valor, cadpro, endereco)"
-                    + " VALUES (?,?,?,?,?,?,?)";
+            String insert = "INSERT INTO imovel(matriculaimovel, tipo, comprimento, largura, valor, cadpro, endereco)" +
+                            " VALUES (?,?,?,?,?,?,?)";
 
             PreparedStatement ps = criarPreparedStatement(insert);
             ps.setString(1, imovel.getMatriculaimovel());
             ps.setString(3, imovel.getTipo());
             ps.setDouble(4, imovel.getComprimento());
-            ps.setDouble(5,imovel.getLargura());
+            ps.setDouble(5, imovel.getLargura());
             ps.setDouble(6, imovel.getValor());
             ps.setDouble(7, imovel.getCadpro());
             ps.setInt(8, imovel.getEndereco().getIdendereco());
@@ -64,15 +64,14 @@ public class DaoImovel extends DAO implements DefaultPersistence<Imovel> {
     @Override
     public boolean update(Imovel imovel) {
         try {
-            String sql = "UPDATE imovel\n"
-                    + "SET idimovel=?, matriculaimovel=?, tipo=?, comprimento=?, largura=?, valor=?, cadpro=?\n"
-                    + " WHERE idimovel= " + imovel.getIdimovel();
+            String sql = "UPDATE imovel\n" + "SET idimovel=?, matriculaimovel=?, tipo=?, comprimento=?, largura=?, " +
+                         "valor=?, cadpro=?\n" + " WHERE idimovel= " + imovel.getIdimovel();
 
             PreparedStatement ps = criarPreparedStatement(sql);
             ps.setString(2, imovel.getMatriculaimovel());
             ps.setString(4, imovel.getTipo());
             ps.setDouble(5, imovel.getComprimento());
-            ps.setDouble(6,imovel.getLargura());
+            ps.setDouble(6, imovel.getLargura());
             ps.setDouble(7, imovel.getValor());
             ps.setDouble(8, imovel.getCadpro());
 
@@ -89,8 +88,7 @@ public class DaoImovel extends DAO implements DefaultPersistence<Imovel> {
         Imovel cl = null;
 
         try {
-            String sql = "SELECT * FROM imovel \n" +
-                    " where imovel.idimovel = " + id;
+            String sql = "SELECT * FROM imovel \n" + " where imovel.idimovel = " + id;
 
             ResultSet rs = runSQL(sql);
 
@@ -105,22 +103,23 @@ public class DaoImovel extends DAO implements DefaultPersistence<Imovel> {
                 cl.setCadpro(rs.getDouble("cadpro"));
             }
         } catch (SQLException e) {
-            System.out.println("Falha ao carregar imovel!\n"
-                    + e.getMessage());
+            System.out.println("Falha ao carregar imovel!\n" + e.getMessage());
         }
         return cl;
     }
 
     @Override
-    public void delete(int id) {
-        try {
-            String sql = "DELETE FROM imovel\n" +
-                         "WHERE idimovel = " + id;
-            executeSql(sql);
+    public Imovel delete(int id) {
 
-        }catch (SQLException e) {
-            System.out.println("Falha ao deletar!\n"
-                               + e.getMessage());
+        Imovel imovel = findById(id);
+        try {
+            String sql = "DELETE FROM imovel\n" + "WHERE idimovel = " + id;
+            executeSql(sql);
+            return imovel;
+
+        } catch (SQLException e) {
+            System.out.println("Falha ao deletar!\n" + e.getMessage());
+            return null;
         }
     }
 }

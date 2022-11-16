@@ -9,5 +9,5 @@ public interface DefaultPersistence<T> {
     boolean save(T t);
     boolean update(T t);
     T findById(int id);
-    void delete(int id);
+    T delete(int id);
 }

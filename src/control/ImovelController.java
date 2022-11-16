@@ -5,13 +5,13 @@ import persistence.DaoEndereco;
 import persistence.DaoImovel;
 import util.Input;
 
-public class ImovelController extends DefaultController{
+public class ImovelController extends DefaultController {
 
     DaoImovel daoImovel = new DaoImovel();
     private Imovel imovel;
     private DaoEndereco daoEndereco;
 
-    public ImovelController(){
+    public ImovelController() {
         imovel = new Imovel();
         daoEndereco = new DaoEndereco();
     }
@@ -62,7 +62,12 @@ public class ImovelController extends DefaultController{
 
     public void delete() {
         System.out.println("Id do imovel:");
-        daoImovel.delete(Input.nextInt());
+        Imovel imovelDeleted = daoImovel.delete(Input.nextInt());
+        if (imovelDeleted != null) {
+            System.out.println("Vendedor: \n" + imovelDeleted + " deletado");
+        } else {
+            System.out.println("falha ao deletar imovel");
+        }
     }
 
     public void list() {
@@ -70,6 +75,6 @@ public class ImovelController extends DefaultController{
     }
 
     public String toString() {
-        return "cliente";
+        return "imovel";
     }
 }

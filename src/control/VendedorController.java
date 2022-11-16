@@ -6,9 +6,11 @@ import persistence.DaoVendedor;
 import util.DateUtils;
 import util.Input;
 
-public class VendedorController extends DefaultController{
+import java.util.ArrayList;
 
-    DaoVendedor daoVendedor;
+public class VendedorController extends DefaultController {
+
+    DaoVendedor daoVendedor = new DaoVendedor();
 
     public Vendedor create() {
         Vendedor vendedor = new Vendedor();
@@ -59,14 +61,23 @@ public class VendedorController extends DefaultController{
 
     public void delete() {
         System.out.println("Id do vendedor:");
-        daoVendedor.delete(Input.nextInt());
+        Vendedor vendedorDeleted = daoVendedor.delete(Input.nextInt());
+        if (vendedorDeleted != null) {
+            System.out.println("Vendedor: " + vendedorDeleted.getNome() + " de id: " + vendedorDeleted.getIdvendedor() + " deletado");
+        } else {
+            System.out.println("falha ao deletar vendedor");
+        }
     }
 
     public void list() {
+        ArrayList<Vendedor> vendedores = daoVendedor.findAll();
+        for (Vendedor vendedor : vendedores) {
+            System.out.println(vendedor.toString());
+        }
 
     }
 
     public String toString() {
-        return "cliente";
+        return "vendedor";
     }
 }

@@ -1,8 +1,11 @@
 package control;
 
 import model.Endereco;
+import model.Vendedor;
 import persistence.DaoEndereco;
 import util.Input;
+
+import java.util.ArrayList;
 
 public class EnderecoController extends DefaultController{
 
@@ -44,14 +47,25 @@ public class EnderecoController extends DefaultController{
 
     public void delete() {
         System.out.println("Id do endereco:");
-        daoEndereco.delete(Input.nextInt());
+        Endereco enerecoDeleted = daoEndereco.delete(Input.nextInt());
+        if (enerecoDeleted != null) {
+            System.out.println("Endereco: \n" + enerecoDeleted +
+                               " deletado");
+        } else {
+            System.out.println("falha ao deletar vendedor");
+        }
     }
 
     public void list() {
+        ArrayList<Endereco> enderecos = daoEndereco.findAll();
+        for (Endereco endereco:
+                enderecos) {
+            System.out.println(endereco.toString());
+        }
 
     }
 
     public String toString() {
-        return "cliente";
+        return "endereco";
     }
 }

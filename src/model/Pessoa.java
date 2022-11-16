@@ -1,11 +1,11 @@
 package model;
 
 public class Pessoa {
-    private int idpessoa;
-    private String nome;
-    private int cpf;
-    private String dataNasc;
-    private Endereco endereco;
+    protected int idpessoa;
+    protected String nome;
+    protected int cpf;
+    protected String dataNasc;
+    protected Endereco endereco;
 
     public Pessoa() {
     }
